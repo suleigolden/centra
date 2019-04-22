@@ -3,9 +3,13 @@ use KanbanBoard\Authentication;
 use KanbanBoard\GithubActual;
 use KanbanBoard\Utilities;
 
+require '../../vendor/autoload.php';
 require '../classes/KanbanBoard/Github.php';
 require '../classes/Utilities.php';
 require '../classes/KanbanBoard/Authentication.php';
+
+$dotenv = new Dotenv\Dotenv(__DIR__.'/../../');
+$dotenv->load();
 
 $repositories = explode('|', Utilities::env('GH_REPOSITORIES'));
 $authentication = new \KanbanBoard\Login();
