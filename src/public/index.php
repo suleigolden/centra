@@ -15,7 +15,10 @@ $repositories = explode('|', Utilities::env('GH_REPOSITORIES'));
 $authentication = new \KanbanBoard\Login();
 $token = $authentication->login();
 
-echo "This is token: ".$token; exit();
+//echo "This is token: ".$token; exit();
+
+$client = new \Github\Client();
+$repositories = $client->api('user')->repositories('suleigolden');
 
 $github = new GithubClient($token, Utilities::env('GH_ACCOUNT'));
 $board = new \KanbanBoard\Application($github, $repositories, array('waiting-for-feedback'));
